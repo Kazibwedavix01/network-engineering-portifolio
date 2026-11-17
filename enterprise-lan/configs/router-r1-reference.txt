@@ -1,0 +1,39 @@
+! SANITIZED REFERENCE SNIPPETS — NOT A COMPLETE RUNNING CONFIG
+! Credentials, hashes, RSA keys, and device-specific secrets intentionally omitted.
+! Review against the Packet Tracer file before reuse.
+
+hostname R1-HEAD-OFFICE
+!
+interface GigabitEthernet0/0
+ no shutdown
+!
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip access-group DEPARTMENT-SECURITY in
+!
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ ip access-group DEPARTMENT-SECURITY in
+!
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+!
+ip dhcp excluded-address 192.168.10.1 192.168.10.20
+ip dhcp excluded-address 192.168.20.1 192.168.20.20
+ip dhcp excluded-address 192.168.30.1 192.168.30.20
+!
+! DHCP pools: ADMIN, FINANCE, IT
+! Default routers: 192.168.10.1 / 192.168.20.1 / 192.168.30.1
+! DNS server configured in pools: 8.8.8.8
+!
+ip access-list extended DEPARTMENT-SECURITY
+ deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+ deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ permit ip any any
+!
+! SSH v2 enabled; local user networkadmin privilege 15 configured.
+! VTY lines use login local and transport input ssh.
+! Do not publish the original secret, hash, or RSA key material.
