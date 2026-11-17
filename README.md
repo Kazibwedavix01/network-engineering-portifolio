@@ -43,7 +43,7 @@ Each completed project will aim to include:
 
 ## Current Work
 
-The first project is an enterprise LAN design and implementation using Cisco Packet Tracer. The lab includes departmental VLANs, router-on-a-stick inter-VLAN routing, DHCP, department access restrictions, and SSH management. Project documentation and sanitized evidence will be added as the implementation is finalized.
+The first project, an enterprise LAN design and implementation using Cisco Packet Tracer, is implemented and technically verified. Its report, addressing plan, verification matrix, editable topology, sanitized configuration references, and LinkedIn draft are published in `enterprise-lan/`. The Packet Tracer `.pkt` file and screenshots remain to be added after review.
 
 ## Tools
 
