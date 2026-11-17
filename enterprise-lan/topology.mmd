@@ -1,0 +1,22 @@
+flowchart TB
+  R1["R1-HEAD-OFFICE<br/>Cisco 2911<br/>G0/0.10 · G0/0.20 · G0/0.30"]
+  SW1["SW1-ADMIN<br/>Cisco 2960"]
+  SW2["SW2-DEPARTMENTS<br/>Cisco 2960"]
+  ADMIN["PC-ADMIN<br/>VLAN 10 · 192.168.10.21"]
+  FINANCE["PC-FINANCE<br/>VLAN 20 · 192.168.20.21"]
+  IT1["PC-IT-01<br/>VLAN 30 · 192.168.30.21"]
+  IT2["PC-IT-02<br/>VLAN 30 · 192.168.30.22"]
+
+  R1 <-->|"802.1Q trunk<br/>G0/0 ↔ G0/1"| SW1
+  SW1 <-->|"802.1Q trunk<br/>G0/2 ↔ G0/1"| SW2
+  SW1 ---|"Fa0/1 · access VLAN 10"| ADMIN
+  SW1 ---|"Fa0/2 · access VLAN 20"| FINANCE
+  SW2 ---|"Fa0/1 · access VLAN 30"| IT1
+  SW2 ---|"Fa0/2 · access VLAN 30"| IT2
+
+  classDef router fill:#dbeafe,stroke:#2563eb,color:#111827
+  classDef switch fill:#dcfce7,stroke:#16a34a,color:#111827
+  classDef endpoint fill:#f3f4f6,stroke:#6b7280,color:#111827
+  class R1 router
+  class SW1,SW2 switch
+  class ADMIN,FINANCE,IT1,IT2 endpoint
